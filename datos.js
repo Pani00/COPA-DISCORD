@@ -22,7 +22,7 @@ var DATOS = {
   juegos: ["BAPBAP", "VALO", "CS", "LOL", "TFT", "AGE OF EMPIRES", "AJEDREZ", "QUAKE", "BRAWLHALLA", "MINECRAFT PVP", "GEOGUESSR", "TETRIS", "ROCKET LEAGUE", "OSU"],
 
   // ⚠️ EJEMPLO: reemplazá estos nombres por los de ustedes
-  participantes: ["dozy", "mauro", "roses", "pani", "negar", "valenzapp", "coni", "char", "zowi", "nico10", "karo", "chartiti", "lucas"],
+  participantes: ["dozy", "mauro", "roses", "pani", "negar", "valenzapp", "coni", "char", "zowi", "nico10", "karo", "lucas"],
 
   // ⚠️ EJEMPLO: borrá estas partidas y cargá las reales
   partidas: [
