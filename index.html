@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Copa Discord</title>
+<meta name="description" content="Tabla de posiciones de La Copa Discord">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070f;--card:rgba(20,20,38,.62);--tx:#eef0ff;--mut:#8b90b8;--line:rgba(140,150,255,.18);--ac:#7c5cff;--ac2:#00e5ff;--pink:#ff2d95;--gold:#ffd447;--silver:#c9d3ea;--bronze:#e08a4b;color-scheme:dark}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--tx);font-family:"Rajdhani","Segoe UI",system-ui,sans-serif;font-weight:600;font-size:1.05rem;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20%;z-index:-2;background:
+ radial-gradient(40% 35% at 15% 20%,rgba(124,92,255,.45),transparent 70%),
+ radial-gradient(35% 30% at 85% 15%,rgba(0,229,255,.28),transparent 70%),
+ radial-gradient(45% 40% at 70% 90%,rgba(255,45,149,.30),transparent 70%),var(--bg);animation:drift 18s ease-in-out infinite alternate}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(140,150,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(140,150,255,.07) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%)}
+@keyframes drift{to{transform:translate3d(3%,2%,0) scale(1.08)}}
+@keyframes shine{to{background-position:200% center}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes glow{50%{box-shadow:0 0 0 3px var(--gold),0 0 46px rgba(255,212,71,.85)}}
+.w{max-width:980px;margin:0 auto;padding:38px 16px 70px}
+.hero{margin-bottom:26px;animation:up .6s both}
+.kicker{font-family:"Orbitron",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ac2);text-shadow:0 0 12px rgba(0,229,255,.6);margin-bottom:8px}
+h1{margin:0;font-family:"Orbitron",sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(2rem,8vw,3.6rem);line-height:1.05;background:linear-gradient(90deg,var(--ac2),var(--ac),var(--pink),var(--ac2));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shine 6s linear infinite;filter:drop-shadow(0 0 18px rgba(124,92,255,.55))}
+h2{display:flex;align-items:center;gap:10px;font-family:"Orbitron",sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.18em;color:var(--ac2);margin:44px 0 14px;text-shadow:0 0 14px rgba(0,229,255,.6)}
+h2::before{content:"";width:28px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ac2),var(--pink));box-shadow:0 0 12px var(--ac2)}
+button,select{font:inherit;font-weight:700;color:var(--tx)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px;animation:up .6s .1s both}
+select{background:rgba(10,10,24,.75);border:1px solid var(--line);border-radius:12px;padding:9px 14px;cursor:pointer}
+select:focus,.chip:focus-visible{outline:none;border-color:var(--ac2);box-shadow:0 0 0 3px rgba(0,229,255,.2)}
+select option{background:#12122a}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:rgba(124,92,255,.12);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;transition:.18s}
+.chip:hover{border-color:var(--ac2);background:rgba(0,229,255,.1)}
+.chip.on{background:linear-gradient(135deg,var(--ac),var(--pink));border-color:transparent;box-shadow:0 6px 22px rgba(124,92,255,.45)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;animation:up .6s .15s both}
+.stat,.card,.match{background:var(--card);border:1px solid var(--line);border-radius:18px;-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)}
+.stat{padding:16px 18px}
+.stat small{display:block;font-family:"Orbitron",sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.stat b{font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(1.1rem,4.5vw,1.7rem);color:var(--tx);overflow-wrap:anywhere}
+.stat b.lead{color:var(--gold);text-shadow:0 0 16px rgba(255,212,71,.6)}
+.podium{display:flex;justify-content:center;align-items:flex-end;gap:12px;margin:34px 0 4px}
+.pod{flex:1;max-width:230px;display:flex;flex-direction:column;align-items:center;text-align:center;animation:up .7s both}
+.p1{animation-delay:.1s}.p2{animation-delay:.25s}.p3{animation-delay:.4s}
+.pod-name{margin-top:10px;font-weight:700;font-size:1.15rem;overflow-wrap:anywhere}
+.pod-pts{font-family:"Orbitron",sans-serif;font-weight:900;font-size:1.3rem;margin:2px 0 8px}
+.pod-pts small{font-size:.55rem;letter-spacing:.15em;color:var(--mut);margin-left:4px}
+.pod-ped{width:100%;border:1px solid var(--line);border-bottom:0;border-radius:16px 16px 0 0;display:flex;justify-content:center;padding-top:10px;font-size:2rem}
+.p1 .pod-ped{height:140px;background:linear-gradient(180deg,rgba(255,212,71,.38),rgba(255,212,71,.04));box-shadow:0 -12px 44px rgba(255,212,71,.22)}
+.p2 .pod-ped{height:104px;background:linear-gradient(180deg,rgba(201,211,234,.28),rgba(201,211,234,.03))}
+.p3 .pod-ped{height:78px;background:linear-gradient(180deg,rgba(224,138,75,.3),rgba(224,138,75,.03))}
+.p1 .pod-pts,.p1 .pod-name{color:var(--gold);text-shadow:0 0 16px rgba(255,212,71,.55)}
+.p2 .pod-pts{color:var(--silver)}.p3 .pod-pts{color:var(--bronze)}
+.av{--h:260;display:inline-flex;align-items:center;justify-content:center;flex:none;width:40px;height:40px;border-radius:50%;font-family:"Orbitron",sans-serif;font-weight:800;font-size:.85rem;color:#fff;background:linear-gradient(135deg,hsl(var(--h) 75% 55%),hsl(calc(var(--h) + 50) 80% 40%));box-shadow:0 0 0 2px rgba(255,255,255,.12)}
+.av.lg{width:76px;height:76px;font-size:1.5rem}.av.sm{width:28px;height:28px;font-size:.62rem}
+.p1 .av{box-shadow:0 0 0 3px var(--gold),0 0 30px rgba(255,212,71,.6);animation:glow 3s ease-in-out infinite}
+.p2 .av{box-shadow:0 0 0 3px var(--silver)}.p3 .av{box-shadow:0 0 0 3px var(--bronze)}
+.card{overflow-x:auto;animation:up .6s .2s both}
+.card::-webkit-scrollbar{height:8px}.card::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--ac),var(--pink));border-radius:8px}
+table{width:100%;border-collapse:collapse;min-width:430px}
+th,td{padding:12px 12px;text-align:center;border-bottom:1px solid rgba(140,150,255,.1);white-space:nowrap;font-variant-numeric:tabular-nums}
+th{font-family:"Orbitron",sans-serif;font-weight:700;font-size:.62rem;color:var(--mut);text-transform:uppercase;letter-spacing:.16em;background:rgba(124,92,255,.08)}
+tbody tr{transition:background .2s}tbody tr:hover{background:rgba(124,92,255,.14)}
+tr:last-child td{border-bottom:0}
+td.l,th.l{text-align:left}
+td.pos{width:54px;font-family:"Orbitron",sans-serif;font-weight:900;color:var(--mut);font-size:1.05rem}
+td.who{background:linear-gradient(90deg,rgba(124,92,255,.2) var(--p,0%),transparent var(--p,0%))}
+.who-in{display:flex;align-items:center;gap:12px;font-size:1.15rem;font-weight:700}
+td.pts{font-family:"Orbitron",sans-serif;font-weight:900;font-size:1.25rem;color:var(--ac2);text-shadow:0 0 14px rgba(0,229,255,.6)}
+tr.r1 td.pos,tr.r1 .who-in span:last-child,tr.r1 td.pts{color:var(--gold)}
+tr.r1 td.pts{text-shadow:0 0 16px rgba(255,212,71,.8)}
+tr.r2 td.pos,tr.r2 td.pts{color:var(--silver)}tr.r3 td.pos,tr.r3 td.pts{color:var(--bronze)}
+.hist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.match{padding:16px 16px 10px;border-top:3px solid hsl(var(--h) 90% 60%);animation:up .5s both;transition:transform .2s,box-shadow .2s}
+.match:hover{transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px hsl(var(--h) 90% 60% / .18)}
+.m-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.badge{border-radius:999px;padding:3px 11px;font-size:.88rem;font-weight:700;background:hsl(var(--h) 80% 55% / .18);color:hsl(var(--h) 95% 78%);border:1px solid hsl(var(--h) 80% 60% / .4)}
+.m-date{color:var(--mut);font-size:.9rem;white-space:nowrap}
+.m-list{list-style:none;margin:0;padding:0}
+.m-list li{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(140,150,255,.1)}
+.m-list li:last-child{border-bottom:0}
+.m-name{flex:1;font-weight:700;overflow-wrap:anywhere}
+.m-pts{font-family:"Orbitron",sans-serif;font-weight:800;font-size:.95rem;color:var(--ac2)}
+.win .m-name,.win .m-pts{color:var(--gold)}
+.m-nota{margin:8px 0 4px;color:var(--mut);font-size:.95rem;font-style:italic}
+.empty{padding:34px;text-align:center;color:var(--mut)}
+.warn{background:rgba(255,45,149,.09);border:1px dashed var(--pink);border-radius:14px;padding:12px 16px;margin-bottom:18px;font-size:.95rem;line-height:1.5}
+.warn b{color:var(--pink)}.warn ul{margin:6px 0 0;padding-left:20px}
+@media (max-width:600px){.w{padding-top:26px}.stats{gap:8px}.stat{padding:12px}.pod-ped{font-size:1.5rem}.av.lg{width:58px;height:58px;font-size:1.2rem}th,td{padding:10px 8px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+  <header class="hero">
+    <div class="kicker" id="kicker">Tabla de posiciones</div>
+    <h1 id="title">La Copa Discord</h1>
+  </header>
+  <div id="warn"></div>
+  <div class="toolbar"><select id="season" aria-label="Temporada"></select><div class="chips" id="chips"></div></div>
+  <section class="stats" id="stats"></section>
+  <section class="podium" id="podium"></section>
+  <div class="card"><table><thead><tr><th>#</th><th class="l">Participante</th><th>Partidas</th><th>Victorias</th><th>Puntos</th></tr></thead><tbody id="rb"></tbody></table></div>
+  <h2>Historial de partidas</h2>
+  <div class="hist" id="hist"></div>
+</div>
+
+<script>
+var __errs = [];
+window.addEventListener("error", function(e){
+  if (e.filename && /datos\.js/.test(e.filename)) __errs.push("Hay un error de sintaxis en datos.js (línea " + e.lineno + "): " + e.message + ". Revisá comas, comillas y llaves cerca de esa línea.");
+});
+</script>
+<script src="datos.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+  function fmt(n){ return String(Math.round(n * 100) / 100); }
+
+  if (typeof DATOS === "undefined"){
+    var w = $("warn"); w.className = "warn";
+    w.innerHTML = "<b>No se pudo leer datos.js.</b> " + (__errs.join(" ") || "Revisá que el archivo exista en el repo y se llame exactamente datos.js.");
+    return;
+  }
+  var D = DATOS, warns = __errs.slice();
+  document.title = D.titulo || "La Copa Discord";
+  $("title").textContent = D.titulo || "La Copa Discord";
+  $("kicker").textContent = D.subtitulo || "Tabla de posiciones";
+
+  var players = (D.participantes || []).map(String);
+  var games = (D.juegos || []).map(String);
+  var matches = [];
+  (D.partidas || []).forEach(function(m, i){
+    var n = "Partida #" + (i + 1);
+    var date = String(m.fecha || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)){ warns.push(n + ": fecha inválida (" + (m.fecha || "vacía") + "). Usá AAAA-MM-DD. Esta partida no se muestra."); return; }
+    var pts = {};
+    Object.keys(m.puntos || {}).forEach(function(k){
+      var v = Number(m.puntos[k]);
+      if (players.indexOf(k) < 0){ warns.push(n + " (" + date + "): “" + k + "” no está en la lista de participantes."); return; }
+      if (isNaN(v)){ warns.push(n + " (" + date + "): los puntos de " + k + " no son un número."); return; }
+      pts[k] = v;
+    });
+    var g = String(m.juego || "?");
+    if (games.indexOf(g) < 0) warns.push(n + " (" + date + "): el juego “" + g + "” no está en la lista de juegos.");
+    matches.push({ i: i, date: date, year: date.slice(0, 4), game: g, pts: pts, nota: m.nota ? String(m.nota) : "" });
+  });
+  var allGames = games.slice();
+  matches.forEach(function(m){ if (allGames.indexOf(m.game) < 0) allGames.push(m.game); });
+
+  var EMOJI = { "BAPBAP": "⚔️", "VALO": "🎯", "VALORANT": "🎯", "CS": "🔫", "CS2": "🔫", "LOL": "🧙", "TFT": "♟️", "AGE OF EMPIRES": "🏰", "AJEDREZ": "♞", "MINECRAFT": "⛏️", "GEOGUESSR": "🌎" };
+  function emoji(g){ return EMOJI[g.toUpperCase()] || "🎮"; }
+  function ghue(g){ var i = allGames.indexOf(g); return ((i < 0 ? 0 : i) * 53 + 200) % 360; }
+  function nhue(s){ var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return h; }
+  function initials(n){ var p = n.trim().split(/\s+/); return ((p[0] || "?")[0] + (p.length > 1 ? p[1][0] : "")).toUpperCase(); }
+  function avatar(n, size){ var a = el("span", "av " + (size || ""), initials(n)); a.style.setProperty("--h", nhue(n)); return a; }
+  function fdate(d){ return new Date(d + "T00:00:00Z").toLocaleDateString("es-AR", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
+
+  var years = [];
+  matches.forEach(function(m){ if (years.indexOf(m.year) < 0) years.push(m.year); });
+  years.sort().reverse();
+  if (!years.length) years = [String(new Date().getFullYear())];
+  var state = { season: years[0], game: "all" };
+
+  function current(){
+    return matches.filter(function(m){
+      return (state.season === "all" || m.year === state.season) && (state.game === "all" || m.game === state.game);
+    });
+  }
+  function standings(ms){
+    var rows = players.map(function(p){ return { n: p, pts: 0, pj: 0, w: 0 }; });
+    var idx = {}; rows.forEach(function(r){ idx[r.n] = r; });
+    ms.forEach(function(m){
+      var ks = Object.keys(m.pts); if (!ks.length) return;
+      var max = Math.max.apply(null, ks.map(function(k){ return m.pts[k]; }));
+      ks.forEach(function(k){ var r = idx[k]; r.pts += m.pts[k]; r.pj++; if (m.pts[k] === max && max > 0) r.w++; });
+    });
+    rows.sort(function(a, b){ return b.pts - a.pts || b.w - a.w || a.n.localeCompare(b.n); });
+    rows.forEach(function(r, i){ r.pos = (i > 0 && r.pts === rows[i-1].pts && r.w === rows[i-1].w) ? rows[i-1].pos : i + 1; });
+    return rows;
+  }
+  function countUp(e, to){
+    var whole = Math.round(to) === to;
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches){ e.textContent = fmt(to); return; }
+    var t0 = performance.now(), d = 700;
+    (function f(t){ var k = Math.min(1, (t - t0) / d), v = to * (1 - Math.pow(1 - k, 3)); e.textContent = whole ? String(Math.round(v)) : fmt(v); if (k < 1) requestAnimationFrame(f); })(t0);
+  }
+
+  function renderToolbar(){
+    var sel = $("season"); sel.innerHTML = "";
+    years.forEach(function(y){ var o = el("option", "", "Temporada " + y); o.value = y; sel.appendChild(o); });
+    var all = el("option", "", "Todas las temporadas"); all.value = "all"; sel.appendChild(all);
+    sel.value = state.season;
+    sel.onchange = function(){ state.season = sel.value; render(); };
+    var c = $("chips"); c.innerHTML = "";
+    function chip(val, label){
+      var b = el("button", "chip" + (state.game === val ? " on" : ""), label); b.type = "button";
+      b.onclick = function(){ state.game = val; render(); }; c.appendChild(b);
+    }
+    chip("all", "Todos");
+    allGames.forEach(function(g){ chip(g, emoji(g) + " " + g); });
+  }
+
+  function renderStats(ms, rows){
+    var s = $("stats"); s.innerHTML = "";
+    var kinds = {}; ms.forEach(function(m){ kinds[m.game] = 1; });
+    var leader = rows.length && rows[0].pts > 0 ? rows[0].n : "—";
+    [["Partidas", String(ms.length), ""], ["Juegos distintos", String(Object.keys(kinds).length), ""], ["Líder", leader, "lead"]].forEach(function(x){
+      var d = el("div", "stat"); d.appendChild(el("small", "", x[0])); d.appendChild(el("b", x[2], x[1])); s.appendChild(d);
+    });
+  }
+
+  function renderPodium(rows){
+    var box = $("podium"); box.innerHTML = "";
+    if (!rows.length || rows[0].pts <= 0){ box.style.display = "none"; return; }
+    box.style.display = "";
+    var top = rows.slice(0, 3);
+    [1, 0, 2].filter(function(i){ return top[i]; }).forEach(function(i){
+      var r = top[i], col = el("div", "pod p" + (i + 1));
+      col.appendChild(avatar(r.n, "lg"));
+      col.appendChild(el("div", "pod-name", r.n));
+      var p = el("div", "pod-pts"); var num = el("span"); p.appendChild(num); p.appendChild(el("small", "", "PTS")); col.appendChild(p);
+      countUp(num, r.pts);
+      col.appendChild(el("div", "pod-ped", ["🥇", "🥈", "🥉"][Math.min(r.pos, 3) - 1]));
+      box.appendChild(col);
+    });
+  }
+
+  function renderTable(rows){
+    var tb = $("rb"); tb.innerHTML = "";
+    if (!rows.length){ var tr0 = el("tr"), td0 = el("td", "empty", "Todavía no hay participantes en datos.js."); td0.colSpan = 5; tr0.appendChild(td0); tb.appendChild(tr0); return; }
+    var max = rows[0].pts > 0 ? rows[0].pts : 1;
+    rows.forEach(function(r){
+      var tr = el("tr", r.pos <= 3 && r.pts > 0 ? "r" + r.pos : "");
+      tr.appendChild(el("td", "pos", String(r.pos)));
+      var who = el("td", "l who"); who.style.setProperty("--p", Math.max(0, r.pts / max * 100) + "%");
+      var inn = el("div", "who-in"); inn.appendChild(avatar(r.n)); inn.appendChild(el("span", "", r.n)); who.appendChild(inn); tr.appendChild(who);
+      tr.appendChild(el("td", "", String(r.pj)));
+      tr.appendChild(el("td", "", String(r.w)));
+      var pt = el("td", "pts"); tr.appendChild(pt); countUp(pt, r.pts);
+      tb.appendChild(tr);
+    });
+  }
+
+  function renderHist(ms){
+    var h = $("hist"); h.innerHTML = "";
+    if (!ms.length){ h.appendChild(el("div", "empty", "Todavía no hay partidas para esta selección.")); return; }
+    ms.slice().sort(function(a, b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : b.i - a.i; }).forEach(function(m, n){
+      var c = el("article", "match"); c.style.setProperty("--h", ghue(m.game)); c.style.animationDelay = Math.min(n, 12) * 0.04 + "s";
+      var top = el("div", "m-top"); top.appendChild(el("span", "badge", emoji(m.game) + " " + m.game)); top.appendChild(el("span", "m-date", fdate(m.date))); c.appendChild(top);
+      var ks = Object.keys(m.pts).sort(function(a, b){ return m.pts[b] - m.pts[a] || a.localeCompare(b); });
+      var max = ks.length ? m.pts[ks[0]] : 0, ul = el("ul", "m-list");
+      ks.forEach(function(k){
+        var win = m.pts[k] === max && max > 0, li = el("li", win ? "win" : "");
+        li.appendChild(avatar(k, "sm")); li.appendChild(el("span", "m-name", (win ? "👑 " : "") + k));
+        li.appendChild(el("span", "m-pts", (m.pts[k] > 0 ? "+" : "") + fmt(m.pts[k]))); ul.appendChild(li);
+      });
+      c.appendChild(ul);
+      if (m.nota) c.appendChild(el("p", "m-nota", m.nota));
+      h.appendChild(c);
+    });
+  }
+
+  function render(){
+    var ms = current(), rows = standings(ms);
+    renderToolbar(); renderStats(ms, rows); renderPodium(rows); renderTable(rows); renderHist(ms);
+  }
+
+  var wb = $("warn");
+  if (warns.length){
+    wb.className = "warn"; wb.appendChild(el("b", "", "Revisá datos.js:"));
+    var ul = el("ul"); warns.forEach(function(t){ ul.appendChild(el("li", "", t)); }); wb.appendChild(ul);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
