@@ -26,10 +26,6 @@ var DATOS = {
 
   // ⚠️ EJEMPLO: borrá estas partidas y cargá las reales
   partidas: [
-    { fecha: "2026-11-01", juego: "CS",             puntos: { "Jugador 1": 3, "Jugador 2": 2, "Jugador 3": 1 } },
-    { fecha: "2026-11-02", juego: "AJEDREZ",        puntos: { "Jugador 2": 3, "Jugador 4": 1 }, nota: "Final en el tiempo extra" },
-    { fecha: "2026-11-03", juego: "VALO",           puntos: { "Jugador 1": 2, "Jugador 2": 2, "Jugador 3": 3, "Jugador 4": 1 } },
-    { fecha: "2026-11-04", juego: "AGE OF EMPIRES", puntos: { "Jugador 3": 3, "Jugador 1": 2, "Jugador 4": 1 } },
-    { fecha: "2026-11-05", juego: "TFT",            puntos: { "Jugador 4": 3, "Jugador 3": 2, "Jugador 2": 1, "Jugador 1": 1 } },
+    { fecha: "2026-11-01", juego: "CS",             puntos: { "dozy": 0, "mauro": 0, "pani": 0 } },
   ],
 };
